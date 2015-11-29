@@ -14,4 +14,8 @@ class ViewControllerViewModel {
     
     let loginStatus = AuthManager.sharedManager.status.asDriver(onErrorJustReturn: .None)
     
+    func logout() {
+        AuthManager.sharedManager.logout()
+    }
+    
 }

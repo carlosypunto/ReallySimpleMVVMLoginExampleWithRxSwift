@@ -37,8 +37,8 @@ class ViewController: UIViewController {
             .addDisposableTo(disposeBag)
         
         logoutButton.rx_tap
-            .subscribeNext { _ in
-                AuthManager.sharedManager.status.value = .None
+            .subscribeNext { [weak self] _ in
+                self?.viewModel.logout()
             }
             .addDisposableTo(disposeBag)
     }

@@ -39,4 +39,8 @@ class AuthManager {
         .delaySubscription(4, MainScheduler.sharedInstance)
     }
     
+    func logout() {
+        status.value = .None
+    }
+    
 }
