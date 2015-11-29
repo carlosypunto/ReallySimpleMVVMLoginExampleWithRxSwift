@@ -73,11 +73,11 @@
 		072130991C094DE8004839FA /* ReallySimpleMVVMLoginExampleWithRxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				079537DF1C0B42250094AC33 /* From RxSwift Project */,
 				0721309A1C094DE8004839FA /* AppDelegate.swift */,
-				072130B31C0965A6004839FA /* MainVC */,
-				072130B81C09665F004839FA /* LoginVC */,
-				072130AD1C09582C004839FA /* AuthManager.swift */,
-				072130AF1C0958C3004839FA /* ActivityIndicator.swift */,
+				079537E01C0B429C0094AC33 /* ViewModels */,
+				072130B31C0965A6004839FA /* ViewControllers */,
+				079537E11C0B42E50094AC33 /* Managers */,
 				0721309E1C094DE8004839FA /* Main.storyboard */,
 				072130A11C094DE8004839FA /* Assets.xcassets */,
 				072130A31C094DE8004839FA /* LaunchScreen.storyboard */,
@@ -86,23 +86,39 @@
 			path = ReallySimpleMVVMLoginExampleWithRxSwift;
 			sourceTree = "<group>";
 		};
-		072130B31C0965A6004839FA /* MainVC */ = {
+		072130B31C0965A6004839FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				0721309C1C094DE8004839FA /* ViewController.swift */,
-				072130B11C096052004839FA /* ViewControllerViewModel.swift */,
-			);
-			name = MainVC;
-			sourceTree = "<group>";
-		};
-		072130B81C09665F004839FA /* LoginVC */ = {
-			isa = PBXGroup;
-			children = (
 				072130B91C096722004839FA /* LoginNavigationController.swift */,
 				072130B41C0965D0004839FA /* LoginViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		079537DF1C0B42250094AC33 /* From RxSwift Project */ = {
+			isa = PBXGroup;
+			children = (
+				072130AF1C0958C3004839FA /* ActivityIndicator.swift */,
+			);
+			name = "From RxSwift Project";
+			sourceTree = "<group>";
+		};
+		079537E01C0B429C0094AC33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				072130B11C096052004839FA /* ViewControllerViewModel.swift */,
 				072130B61C096604004839FA /* LoginViewModel.swift */,
 			);
-			name = LoginVC;
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		079537E11C0B42E50094AC33 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				072130AD1C09582C004839FA /* AuthManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		908B80657F3A809C4C795DC0 /* Pods */ = {

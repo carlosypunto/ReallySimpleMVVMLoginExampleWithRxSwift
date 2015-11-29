@@ -15,12 +15,11 @@ class ViewController: UIViewController {
     var disposeBag = DisposeBag()
     let viewModel = ViewControllerViewModel()
     
+    @IBOutlet weak var infoView: UIView!
     var loginNavigationController: LoginNavigationController?
     var loginController: LoginViewController?
     
     @IBOutlet weak var infoLabel: UILabel!
-    
-    
     @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidAppear(animated: Bool) {
@@ -45,6 +44,7 @@ class ViewController: UIViewController {
     }
     
     func showLogin() {
+        infoView.hidden = true
         if loginNavigationController == nil {
             loginNavigationController = UIStoryboard.loginNC
             loginController = loginNavigationController?.loginController
@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     }
     
     func showAccess(username: String) {
+        infoView.hidden = false
         infoLabel.text = "You are logged in with username: \(username)"
         dismissViewControllerAnimated(true) { [weak self] in
             self?.loginController = nil

@@ -50,7 +50,9 @@ class LoginViewController: UITableViewController {
                 $0 ? BG_COLOR : UIColor.whiteColor()
             }
             .driveNext { [weak self] color in
-                self?.usernameTextField.superview?.backgroundColor = color
+                UIView.animateWithDuration(0.2) {
+                    self?.usernameTextField.superview?.backgroundColor = color
+                }
             }
             .addDisposableTo(disposeBag)
         
@@ -60,7 +62,9 @@ class LoginViewController: UITableViewController {
                 $0 ? BG_COLOR : UIColor.whiteColor()
             }
             .driveNext { [weak self] color in
-                self?.passwordTextField.superview?.backgroundColor = color
+                UIView.animateWithDuration(0.2) {
+                    self?.passwordTextField.superview?.backgroundColor = color
+                }
             }
             .addDisposableTo(disposeBag)
         

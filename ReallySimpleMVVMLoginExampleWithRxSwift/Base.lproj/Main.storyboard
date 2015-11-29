@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfZ-gc-rBI">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfZ-gc-rBI">
                                 <rect key="frame" x="55" y="261" width="240" height="79"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNE-wB-Gye">
@@ -62,6 +62,7 @@
                     <size key="freeformSize" width="350" height="600"/>
                     <connections>
                         <outlet property="infoLabel" destination="uNE-wB-Gye" id="LbQ-1i-1ak"/>
+                        <outlet property="infoView" destination="MfZ-gc-rBI" id="cFe-21-BhK"/>
                         <outlet property="logoutButton" destination="TKG-Yu-2JQ" id="SIt-AQ-XE8"/>
                     </connections>
                 </viewController>
@@ -73,7 +74,7 @@
         <scene sceneID="tNY-o5-IFI">
             <objects>
                 <tableViewController id="C0y-2q-r4x" customClass="LoginViewController" customModule="ReallySimpleMVVMLoginExampleWithRxSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="snz-HU-b5h">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="snz-HU-b5h">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
