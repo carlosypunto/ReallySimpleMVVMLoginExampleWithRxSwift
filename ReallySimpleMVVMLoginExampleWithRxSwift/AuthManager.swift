@@ -23,9 +23,6 @@ class AuthManager {
     
     func login(username: String, password: String) -> Observable<AutenticationStatus> {
         return create { observer -> Disposable in
-            
-            observer.onNext(.None)
-            
             dispatch_after(4, dispatch_get_main_queue()) {
                 if (username == "user" && password == "password") {
                     observer.onNext(.User(username))
@@ -35,7 +32,6 @@ class AuthManager {
                 }
                 observer.onCompleted()
             }
-            
             return AnonymousDisposable({})
         }
         .delaySubscription(4, MainScheduler.sharedInstance)

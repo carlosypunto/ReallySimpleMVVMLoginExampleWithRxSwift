@@ -55,7 +55,10 @@ class ViewController: UIViewController {
     
     func showAccess(username: String) {
         infoLabel.text = "You are logged in with username: \(username)"
-        dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true) { [weak self] in
+            self?.loginController = nil
+            self?.loginNavigationController = nil
+        }
     }
     
 }

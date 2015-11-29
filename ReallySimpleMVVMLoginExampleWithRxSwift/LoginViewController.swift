@@ -75,13 +75,11 @@ class LoginViewController: UITableViewController {
             .addDisposableTo(disposeBag)
         
         enterButton.rx_tap
-            .debug("rx_tap")
-            .flatMap { _ -> Driver<Bool> in
-                credentialsValid
-            }
+            .withLatestFrom(credentialsValid)
             .filter { $0 }
-            .flatMap { [weak self] valid -> Observable<AutenticationStatus> in
+            .flatMapLatest { [weak self] valid -> Observable<AutenticationStatus> in
                 viewModel.login(self!.usernameTextField.text!, password: self!.passwordTextField.text!)
+                    
                     .trackActivity(viewModel.activityIndicator)
                     .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueuePriority: .Default))
             }
