@@ -47,20 +47,20 @@ class LoginViewController: UITableViewController {
         
         viewModel.usernameValid
             .map {
-                $0 ? UIColor.whiteColor() : UIColor.yellowColor()
+                $0 ? BG_COLOR : UIColor.whiteColor()
             }
             .driveNext { [weak self] color in
-                self?.usernameTextField.backgroundColor = color
+                self?.usernameTextField.superview?.backgroundColor = color
             }
             .addDisposableTo(disposeBag)
         
         
         viewModel.passwordValid
             .map {
-                $0 ? UIColor.whiteColor() : UIColor.yellowColor()
+                $0 ? BG_COLOR : UIColor.whiteColor()
             }
             .driveNext { [weak self] color in
-                self?.passwordTextField.backgroundColor = color
+                self?.passwordTextField.superview?.backgroundColor = color
             }
             .addDisposableTo(disposeBag)
         

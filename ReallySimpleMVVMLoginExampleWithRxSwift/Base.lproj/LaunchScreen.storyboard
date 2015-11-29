@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C47a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,39 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="boI-VR-8VY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="pAL-Ph-fFH">
+                                <rect key="frame" x="172" y="122" width="256" height="256"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="N2D-bi-i6w"/>
+                                    <constraint firstAttribute="height" constant="256" id="RPI-rM-UiD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MVVM Login with RxSwift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxP-8o-iMW">
+                                <rect key="frame" x="148" y="386" width="306" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="boI-VR-8VY" secondAttribute="bottom" id="0sM-I6-N8u"/>
+                            <constraint firstItem="boI-VR-8VY" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1NQ-ff-R8j"/>
+                            <constraint firstItem="boI-VR-8VY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="PNb-HH-wRi"/>
+                            <constraint firstAttribute="trailing" secondItem="boI-VR-8VY" secondAttribute="trailing" id="gv6-RK-WZR"/>
+                            <constraint firstItem="pAL-Ph-fFH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i0O-hb-wns"/>
+                            <constraint firstItem="xxP-8o-iMW" firstAttribute="top" secondItem="pAL-Ph-fFH" secondAttribute="bottom" constant="8" id="jt1-wc-Y8f"/>
+                            <constraint firstItem="xxP-8o-iMW" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qkf-Hv-03q"/>
+                            <constraint firstItem="pAL-Ph-fFH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="s5B-lg-hpu"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +56,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gradient" width="1" height="1200"/>
+        <image name="logo" width="256" height="256"/>
+    </resources>
 </document>

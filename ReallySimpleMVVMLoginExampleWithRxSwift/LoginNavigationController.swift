@@ -8,6 +8,8 @@
 
 import UIKit
 
+let BG_COLOR = UIColor(red: 1, green: 175/255, blue: 66/255, alpha: 1)
+
 class LoginNavigationController: UINavigationController {
     
     var loginController: LoginViewController? {
@@ -16,6 +18,11 @@ class LoginNavigationController: UINavigationController {
     
     private func _loginController() -> LoginViewController? {
         return viewControllers.first as? LoginViewController
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        navigationBar.barTintColor = BG_COLOR
     }
 
 }
