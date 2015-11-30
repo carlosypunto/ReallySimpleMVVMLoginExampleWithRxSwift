@@ -26,24 +26,24 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         viewModel.loginStatus
-            .driveNext { [weak self] status in
+            .driveNext { [unowned self] status in
                 switch status {
                 case .None:
-                    self?.showLogin()
+                    self.showLogin()
                 case .User(let user):
-                    self?.showAccess(user)
+                    self.showAccess(user)
                 }
             }
             .addDisposableTo(disposeBag)
         
         logoutButton.rx_tap
-            .subscribeNext { [weak self] _ in
-                self?.viewModel.logout()
+            .subscribeNext { [unowned self] _ in
+                self.viewModel.logout()
             }
             .addDisposableTo(disposeBag)
     }
     
-    func showLogin() {
+    private func showLogin() {
         infoView.hidden = true
         if loginNavigationController == nil {
             loginNavigationController = UIStoryboard.loginNC
@@ -53,12 +53,12 @@ class ViewController: UIViewController {
         infoLabel.text = ""
     }
     
-    func showAccess(username: String) {
+    private func showAccess(username: String) {
         infoView.hidden = false
         infoLabel.text = "You are logged in with username: \(username)"
-        dismissViewControllerAnimated(true) { [weak self] in
-            self?.loginController = nil
-            self?.loginNavigationController = nil
+        dismissViewControllerAnimated(true) { [unowned self] in
+            self.loginController = nil
+            self.loginNavigationController = nil
         }
     }
     

@@ -26,9 +26,8 @@ class LoginViewController: UITableViewController {
         gr.numberOfTapsRequired = 1
         tableView.addGestureRecognizer(gr)
         gr.rx_event.asObservable()
-            .subscribeNext { [weak self] _ in
-                self?.usernameTextField.resignFirstResponder()
-                self?.passwordTextField.resignFirstResponder()
+            .subscribeNext { [unowned self] _ in
+                self.hideKeyboard()
             }
             .addDisposableTo(disposeBag)
         
@@ -49,9 +48,9 @@ class LoginViewController: UITableViewController {
             .map {
                 $0 ? BG_COLOR : UIColor.whiteColor()
             }
-            .driveNext { [weak self] color in
+            .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
-                    self?.usernameTextField.superview?.backgroundColor = color
+                    self.usernameTextField.superview?.backgroundColor = color
                 }
             }
             .addDisposableTo(disposeBag)
@@ -61,9 +60,9 @@ class LoginViewController: UITableViewController {
             .map {
                 $0 ? BG_COLOR : UIColor.whiteColor()
             }
-            .driveNext { [weak self] color in
+            .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
-                    self?.passwordTextField.superview?.backgroundColor = color
+                    self.passwordTextField.superview?.backgroundColor = color
                 }
             }
             .addDisposableTo(disposeBag)
@@ -73,29 +72,28 @@ class LoginViewController: UITableViewController {
             }.asDriver(onErrorJustReturn: false)
         
         credentialsValid
-            .driveNext { [weak self] valid in
-                self?.enterButton.enabled = valid
+            .driveNext { [unowned self] valid in
+                self.enterButton.enabled = valid
             }
             .addDisposableTo(disposeBag)
         
         enterButton.rx_tap
             .withLatestFrom(credentialsValid)
             .filter { $0 }
-            .flatMapLatest { [weak self] valid -> Observable<AutenticationStatus> in
-                viewModel.login(self!.usernameTextField.text!, password: self!.passwordTextField.text!)
-                    
+            .flatMapLatest { [unowned self] valid -> Observable<AutenticationStatus> in
+                viewModel.login(self.usernameTextField.text!, password: self.passwordTextField.text!)
                     .trackActivity(viewModel.activityIndicator)
                     .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueuePriority: .Default))
             }
             .observeOn(MainScheduler.sharedInstance)
-            .subscribeNext { [weak self] autenticationStatus in
+            .subscribeNext { [unowned self] autenticationStatus in
                 switch autenticationStatus {
                 case .User(_):
                     break
                 case .None:
                     let alertController = UIAlertController(title: "Bad credentials", message: "Try it with the words 'user' and 'password'", preferredStyle: .Alert)
                     alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-                    self?.presentViewController(alertController, animated: true, completion: nil)
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
                 AuthManager.sharedManager.status.value = autenticationStatus
             }
@@ -104,11 +102,17 @@ class LoginViewController: UITableViewController {
         
         viewModel.activityIndicator
             .distinctUntilChanged()
-            .driveNext { [weak self] active in
-                self?.activityIndicator.hidden = !active
+            .driveNext { [unowned self] active in
+                self.hideKeyboard()
+                self.activityIndicator.hidden = !active
             }
             .addDisposableTo(disposeBag)
         
+    }
+    
+    private func hideKeyboard() {
+        self.usernameTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
     }
     
 }
