@@ -17,11 +17,13 @@ class LoginViewModel {
     
     let usernameValid: Driver<Bool>
     let passwordValid: Driver<Bool>
+    let credentialsValid: Driver<Bool>
     
     private var disposeBag = DisposeBag()
     
     
-    init(usernameObservable: Driver<String>, passwordObservable: Driver<String>) {
+    init(usernameObservable: Driver<String>,
+        passwordObservable: Driver<String>) {
         
         usernameValid = usernameObservable
             .map {
@@ -32,6 +34,9 @@ class LoginViewModel {
             .map {
                 $0.utf8.count > 3
             }
+        
+        credentialsValid = combineLatest(usernameValid, passwordValid) { $0 && $1
+            }.asDriver(onErrorJustReturn: false)
         
     }
     

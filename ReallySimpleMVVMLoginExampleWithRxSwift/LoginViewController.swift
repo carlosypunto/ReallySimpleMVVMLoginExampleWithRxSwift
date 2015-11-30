@@ -67,18 +67,14 @@ class LoginViewController: UITableViewController {
             }
             .addDisposableTo(disposeBag)
         
-        let credentialsValid = combineLatest(viewModel.usernameValid, viewModel.passwordValid) { userValid, passValid -> Bool in
-                return userValid && passValid
-            }.asDriver(onErrorJustReturn: false)
-        
-        credentialsValid
+        viewModel.credentialsValid
             .driveNext { [unowned self] valid in
                 self.enterButton.enabled = valid
             }
             .addDisposableTo(disposeBag)
         
         enterButton.rx_tap
-            .withLatestFrom(credentialsValid)
+            .withLatestFrom(viewModel.credentialsValid)
             .filter { $0 }
             .flatMapLatest { [unowned self] valid -> Observable<AutenticationStatus> in
                 viewModel.login(self.usernameTextField.text!, password: self.passwordTextField.text!)
