@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		072130971C094DE7004839FA /* ReallySimpleMVVMLoginExampleWithRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReallySimpleMVVMLoginExampleWithRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		072130971C094DE7004839FA /* RxLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0721309A1C094DE8004839FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0721309C1C094DE8004839FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0721309F1C094DE8004839FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		072130981C094DE7004839FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				072130971C094DE7004839FA /* ReallySimpleMVVMLoginExampleWithRxSwift.app */,
+				072130971C094DE7004839FA /* RxLogin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 			);
 			name = ReallySimpleMVVMLoginExampleWithRxSwift;
 			productName = ReallySimpleMVVMLoginExampleWithRxSwift;
-			productReference = 072130971C094DE7004839FA /* ReallySimpleMVVMLoginExampleWithRxSwift.app */;
+			productReference = 072130971C094DE7004839FA /* RxLogin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -382,7 +382,7 @@
 				INFOPLIST_FILE = ReallySimpleMVVMLoginExampleWithRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.cgn.ReallySimpleMVVMLoginExampleWithRxSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RxLogin;
 			};
 			name = Debug;
 		};
@@ -394,7 +394,7 @@
 				INFOPLIST_FILE = ReallySimpleMVVMLoginExampleWithRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.cgn.ReallySimpleMVVMLoginExampleWithRxSwift;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RxLogin;
 			};
 			name = Release;
 		};
