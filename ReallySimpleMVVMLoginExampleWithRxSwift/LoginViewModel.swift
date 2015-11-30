@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 
-class LoginViewModel {
+struct LoginViewModel {
     
     let activityIndicator = ActivityIndicator()
     
@@ -35,8 +35,8 @@ class LoginViewModel {
                 $0.utf8.count > 3
             }
         
-        credentialsValid = combineLatest(usernameValid, passwordValid) { $0 && $1
-            }.asDriver(onErrorJustReturn: false)
+        credentialsValid = combineLatest(usernameValid, passwordValid) { $0 && $1 }
+            .asDriver(onErrorJustReturn: false)
         
     }
     

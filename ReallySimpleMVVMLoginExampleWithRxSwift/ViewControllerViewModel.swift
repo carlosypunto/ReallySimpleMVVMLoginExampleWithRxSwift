@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 
-class ViewControllerViewModel {
+struct ViewControllerViewModel {
     
     let loginStatus = AuthManager.sharedManager.status.asDriver(onErrorJustReturn: .None)
     

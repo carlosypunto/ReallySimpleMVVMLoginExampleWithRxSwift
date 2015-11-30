@@ -45,9 +45,7 @@ class LoginViewController: UITableViewController {
         let viewModel = LoginViewModel(usernameObservable: usernameOb, passwordObservable: passwordOb)
         
         viewModel.usernameValid
-            .map {
-                $0 ? BG_COLOR : UIColor.whiteColor()
-            }
+            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
             .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
                     self.usernameTextField.superview?.backgroundColor = color
@@ -57,9 +55,7 @@ class LoginViewController: UITableViewController {
         
         
         viewModel.passwordValid
-            .map {
-                $0 ? BG_COLOR : UIColor.whiteColor()
-            }
+            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
             .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
                     self.passwordTextField.superview?.backgroundColor = color
