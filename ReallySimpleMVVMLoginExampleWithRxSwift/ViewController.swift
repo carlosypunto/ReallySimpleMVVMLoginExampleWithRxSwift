@@ -30,6 +30,8 @@ class ViewController: UIViewController {
                 switch status {
                 case .None:
                     self.showLogin()
+                case .Error(_):
+                    self.showLogin()  
                 case .User(let user):
                     self.showAccess(user)
                 }

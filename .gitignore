@@ -28,3 +28,4 @@ Pods/
 
 # Mac OS X
 .DS_Store
+server/node_modules/

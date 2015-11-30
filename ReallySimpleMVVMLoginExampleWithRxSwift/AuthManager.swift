@@ -8,7 +8,10 @@
 
 import RxSwift
 
+typealias JSONDictionary = [String:AnyObject]
+
 enum AutenticationStatus {
+    case Error(String)
     case None
     case User(String)
 }
@@ -22,21 +25,27 @@ class AuthManager {
     private init() {}
     
     func login(username: String, password: String) -> Observable<AutenticationStatus> {
-        return create { observer -> Disposable in
-            
-            // Simulate delay of network connection
-            dispatch_after(4, dispatch_get_main_queue()) {
-                if (username == "user" && password == "password") {
-                    observer.onNext(.User(username))
+        let url = NSURL(string: "http://localhost:3000/login/\(username)/\(password)")!
+        return NSURLSession.sharedSession().rx_JSON(url)
+            .map {
+                guard let root = $0 as? JSONDictionary,
+                    let loginStatus = root["login_status"] as? Bool else {
+                    return .Error("Invalid server response")
+                }
+                
+                if loginStatus {
+                    guard let user = root["user"] as? JSONDictionary,
+                    let firstname = user["firstname"] as? String,
+                    let lastname = user["lastname"] else {
+                        return .Error("Invalid server response")
+                    }
+                    return .User("\(firstname) \(lastname)")
                 }
                 else {
-                    observer.onNext(.None)
+                    return .None
                 }
-                observer.onCompleted()
             }
-            return AnonymousDisposable({})
-        }
-        .delaySubscription(4, MainScheduler.sharedInstance)
+            .catchErrorJustReturn(.Error("Server error"))
     }
     
     func logout() {

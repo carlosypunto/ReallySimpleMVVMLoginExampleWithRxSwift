@@ -86,6 +86,8 @@ class LoginViewController: UITableViewController {
                 switch autenticationStatus {
                 case .User(_):
                     break
+                case .Error(let error):
+                    self.showError(error)
                 case .None:
                     let alertController = UIAlertController(title: "Bad credentials", message: "Try it with the words 'user' and 'password'", preferredStyle: .Alert)
                     alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
@@ -109,6 +111,12 @@ class LoginViewController: UITableViewController {
     private func hideKeyboard() {
         self.usernameTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
+    }
+    
+    private func showError(error: String) {
+        let alert = UIAlertController(title: "An error occuried", message: error, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
     }
     
 }
