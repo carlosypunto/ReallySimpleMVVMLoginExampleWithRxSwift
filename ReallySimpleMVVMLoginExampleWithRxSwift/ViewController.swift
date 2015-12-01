@@ -12,7 +12,7 @@ import RxCocoa
 
 class ViewController: UIViewController {
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     let viewModel = ViewControllerViewModel()
     
     @IBOutlet weak var infoView: UIView!
@@ -47,12 +47,13 @@ class ViewController: UIViewController {
     
     private func showLogin() {
         infoView.hidden = true
-        if loginNavigationController == nil {
+        infoLabel.text = ""
+        guard loginNavigationController != nil else {
             loginNavigationController = UIStoryboard.loginNC
             loginController = loginNavigationController?.loginController
             presentViewController(loginNavigationController!, animated: true, completion: nil)
+            return
         }
-        infoLabel.text = ""
     }
     
     private func showAccess(username: String) {

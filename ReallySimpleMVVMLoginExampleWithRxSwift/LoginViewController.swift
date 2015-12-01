@@ -18,7 +18,7 @@ class LoginViewController: UITableViewController {
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         
@@ -99,6 +99,7 @@ class LoginViewController: UITableViewController {
             .driveNext { [unowned self] active in
                 self.hideKeyboard()
                 self.activityIndicator.hidden = !active
+                self.enterButton.enabled = !active
             }
             .addDisposableTo(disposeBag)
         
