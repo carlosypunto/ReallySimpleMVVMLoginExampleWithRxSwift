@@ -6,7 +6,6 @@
 //  Copyright © 2015 Carlos García. All rights reserved.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 
@@ -22,15 +21,18 @@ struct LoginViewModel {
     private var disposeBag = DisposeBag()
     
     
-    init(usernameObservable: Driver<String>,
-        passwordObservable: Driver<String>) {
+    init(usernameText: Driver<String>, passwordText: Driver<String>) {
         
-        usernameValid = usernameObservable
+        usernameValid = usernameText
+            .distinctUntilChanged()
+            .throttle(0.3, MainScheduler.sharedInstance)
             .map {
                 $0.utf8.count > 3
             }
         
-        passwordValid = passwordObservable
+        passwordValid = passwordText
+            .distinctUntilChanged()
+            .throttle(0.3, MainScheduler.sharedInstance)
             .map {
                 $0.utf8.count > 3
             }

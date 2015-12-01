@@ -31,18 +31,8 @@ class LoginViewController: UITableViewController {
             }
             .addDisposableTo(disposeBag)
         
-        let usernameOb = usernameTextField.rx_text
-            .distinctUntilChanged()
-            .throttle(0.3, MainScheduler.sharedInstance)
-            .asDriver(onErrorJustReturn: "")
-        
-        let passwordOb = passwordTextField.rx_text
-            .distinctUntilChanged()
-            .throttle(0.3, MainScheduler.sharedInstance)
-            .asDriver(onErrorJustReturn: "")
-        
-        
-        let viewModel = LoginViewModel(usernameObservable: usernameOb, passwordObservable: passwordOb)
+        let viewModel = LoginViewModel(usernameText: usernameTextField.rx_text.asDriver(),
+            passwordText: passwordTextField.rx_text.asDriver())
         
         viewModel.usernameValid
             .map { $0 ? BG_COLOR : UIColor.whiteColor() }
