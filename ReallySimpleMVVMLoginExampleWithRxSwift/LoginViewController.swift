@@ -34,8 +34,7 @@ class LoginViewController: UITableViewController {
         let viewModel = LoginViewModel(usernameText: usernameTextField.rx_text.asDriver(),
             passwordText: passwordTextField.rx_text.asDriver())
         
-        viewModel.usernameValid
-            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
+        viewModel.usernameBGColor
             .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
                     self.usernameTextField.superview?.backgroundColor = color
@@ -44,8 +43,7 @@ class LoginViewController: UITableViewController {
             .addDisposableTo(disposeBag)
         
         
-        viewModel.passwordValid
-            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
+        viewModel.passwordBGColor
             .driveNext { [unowned self] color in
                 UIView.animateWithDuration(0.2) {
                     self.passwordTextField.superview?.backgroundColor = color

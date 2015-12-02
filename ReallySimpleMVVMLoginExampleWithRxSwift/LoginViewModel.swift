@@ -14,8 +14,8 @@ struct LoginViewModel {
     
     let activityIndicator = ActivityIndicator()
     
-    let usernameValid: Driver<Bool>
-    let passwordValid: Driver<Bool>
+    let usernameBGColor: Driver<UIColor>
+    let passwordBGColor: Driver<UIColor>
     let credentialsValid: Driver<Bool>
     
     private var disposeBag = DisposeBag()
@@ -23,19 +23,21 @@ struct LoginViewModel {
     
     init(usernameText: Driver<String>, passwordText: Driver<String>) {
         
-        usernameValid = usernameText
+        let usernameValid = usernameText
             .distinctUntilChanged()
             .throttle(0.3, MainScheduler.sharedInstance)
-            .map {
-                $0.utf8.count > 3
-            }
+            .map { $0.utf8.count > 3 }
         
-        passwordValid = passwordText
+        let passwordValid = passwordText
             .distinctUntilChanged()
             .throttle(0.3, MainScheduler.sharedInstance)
-            .map {
-                $0.utf8.count > 3
-            }
+            .map { $0.utf8.count > 3 }
+        
+        usernameBGColor = usernameValid
+            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
+        
+        passwordBGColor = passwordValid
+            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
         
         credentialsValid = combineLatest(usernameValid, passwordValid) { $0 && $1 }
             .asDriver(onErrorJustReturn: false)
