@@ -18,9 +18,6 @@ struct LoginViewModel {
     let passwordBGColor: Driver<UIColor>
     let credentialsValid: Driver<Bool>
     
-    private var disposeBag = DisposeBag()
-    
-    
     init(usernameText: Driver<String>, passwordText: Driver<String>) {
         
         let usernameValid = usernameText
