@@ -22,12 +22,12 @@ struct LoginViewModel {
         
         let usernameValid = usernameText
             .distinctUntilChanged()
-            .throttle(0.3, MainScheduler.sharedInstance)
+            .throttle(0.3)
             .map { $0.utf8.count > 3 }
         
         let passwordValid = passwordText
             .distinctUntilChanged()
-            .throttle(0.3, MainScheduler.sharedInstance)
+            .throttle(0.3)
             .map { $0.utf8.count > 3 }
         
         usernameBGColor = usernameValid
@@ -36,8 +36,7 @@ struct LoginViewModel {
         passwordBGColor = passwordValid
             .map { $0 ? BG_COLOR : UIColor.whiteColor() }
         
-        credentialsValid = combineLatest(usernameValid, passwordValid) { $0 && $1 }
-            .asDriver(onErrorJustReturn: false)
+        credentialsValid = Driver.combineLatest(usernameValid, passwordValid) { $0 && $1 }
         
     }
     

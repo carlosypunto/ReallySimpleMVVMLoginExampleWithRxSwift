@@ -63,9 +63,9 @@ class LoginViewController: UITableViewController {
             .flatMapLatest { [unowned self] valid -> Observable<AutenticationStatus> in
                 viewModel.login(self.usernameTextField.text!, password: self.passwordTextField.text!)
                     .trackActivity(viewModel.activityIndicator)
-                    .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueuePriority: .Default))
+                    .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Default))
             }
-            .observeOn(MainScheduler.sharedInstance)
+            .observeOn(MainScheduler.instance)
             .subscribeNext { [unowned self] autenticationStatus in
                 switch autenticationStatus {
                 case .User(_):
