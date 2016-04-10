@@ -18,8 +18,8 @@ Make sure you have `node.js` and `npm` installed.
 and run `pod install` in the iOS project.
 
 To log in, use the following credentials:
-* username: user
-* password: password
+* `username`: user
+* `password`: password
 
 # Questions
 If you have any questions about the project, please open an issue or ask questions at [rxswift.slack.com](rxswift.slack.com)
