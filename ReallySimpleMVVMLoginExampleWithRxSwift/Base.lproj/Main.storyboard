@@ -119,19 +119,16 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RQY-JG-0rH">
                                                     <rect key="frame" x="8" y="13" width="334" height="17"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="RQY-JG-0rH" firstAttribute="leading" secondItem="Mei-Yy-6cB" secondAttribute="leading" constant="8" id="Koc-rd-esR"/>
                                                 <constraint firstAttribute="trailing" secondItem="RQY-JG-0rH" secondAttribute="trailing" constant="8" id="dvS-aC-F01"/>
                                                 <constraint firstItem="RQY-JG-0rH" firstAttribute="centerY" secondItem="Mei-Yy-6cB" secondAttribute="centerY" id="scd-Ry-r8T"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
