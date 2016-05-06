@@ -10,9 +10,15 @@ import RxSwift
 
 typealias JSONDictionary = [String:AnyObject]
 
+enum AutenticationError: ErrorType {
+    case Server
+    case BadReponse
+    case BadCredentials
+}
+
 enum AutenticationStatus {
-    case Error(String)
     case None
+    case Error(AutenticationError)
     case User(String)
 }
 
@@ -30,22 +36,22 @@ class AuthManager {
             .map {
                 guard let root = $0 as? JSONDictionary,
                     let loginStatus = root["login_status"] as? Bool else {
-                    return .Error("Invalid server response")
+                    return .Error(.BadReponse)
                 }
                 
                 if loginStatus {
                     guard let user = root["user"] as? JSONDictionary,
                     let firstname = user["firstname"] as? String,
                     let lastname = user["lastname"] else {
-                        return .Error("Invalid server response")
+                        return .Error(.BadReponse)
                     }
                     return .User("\(firstname) \(lastname)")
                 }
                 else {
-                    return .None
+                    return .Error(.BadCredentials)
                 }
             }
-            .catchErrorJustReturn(.Error("Server error"))
+            .catchErrorJustReturn(.Error(.Server))
     }
     
     func logout() {
