@@ -21,6 +21,12 @@ To log in, use the following credentials:
 * `username`: user
 * `password`: password
 
+To get a server error, use:
+* `username`: error
+* `password`: any you want
+
+To get bad credentials error, do not use any of the above cases.
+
 # Questions
 If you have any questions about the project, please open an issue or ask questions at [rxswift.slack.com](rxswift.slack.com)
 
