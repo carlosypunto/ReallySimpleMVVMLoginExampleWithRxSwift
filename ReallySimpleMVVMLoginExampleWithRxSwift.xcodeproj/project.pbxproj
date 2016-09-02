@@ -18,11 +18,28 @@
 		072130B51C0965D0004839FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072130B41C0965D0004839FA /* LoginViewController.swift */; };
 		072130B71C096604004839FA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072130B61C096604004839FA /* LoginViewModel.swift */; };
 		072130BA1C096722004839FA /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072130B91C096722004839FA /* LoginNavigationController.swift */; };
-		944D1C7656B8A647CE8314A7 /* Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044719D0B41C32F580C505A9 /* Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework */; };
+		382A884D1D788B610051692A /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382A884B1D788B610051692A /* RxCocoa.framework */; };
+		382A884E1D788B610051692A /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 382A884B1D788B610051692A /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		382A884F1D788B610051692A /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382A884C1D788B610051692A /* RxSwift.framework */; };
+		382A88501D788B610051692A /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 382A884C1D788B610051692A /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		382A88511D788B610051692A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				382A88501D788B610051692A /* RxSwift.framework in Embed Frameworks */,
+				382A884E1D788B610051692A /* RxCocoa.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		044719D0B41C32F580C505A9 /* Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072130971C094DE7004839FA /* RxLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0721309A1C094DE8004839FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0721309C1C094DE8004839FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,9 +53,9 @@
 		072130B41C0965D0004839FA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		072130B61C096604004839FA /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		072130B91C096722004839FA /* LoginNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
-		679A03F287930CB0A550EFED /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReallySimpleMVVMLoginExampleWithRxSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReallySimpleMVVMLoginExampleWithRxSwift/Pods-ReallySimpleMVVMLoginExampleWithRxSwift.release.xcconfig"; sourceTree = "<group>"; };
-		76BAA8E51A48FFA7E0A9317D /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReallySimpleMVVMLoginExampleWithRxSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReallySimpleMVVMLoginExampleWithRxSwift/Pods-ReallySimpleMVVMLoginExampleWithRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		A97A763703511A9501F27BD2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		382A884B1D788B610051692A /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		382A884C1D788B610051692A /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		38CA06FB1D7887DC00AAEC10 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				944D1C7656B8A647CE8314A7 /* Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework in Frameworks */,
+				382A884F1D788B610051692A /* RxSwift.framework in Frameworks */,
+				382A884D1D788B610051692A /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,9 +74,9 @@
 		0721308E1C094DE7004839FA = {
 			isa = PBXGroup;
 			children = (
+				38CA06FB1D7887DC00AAEC10 /* Cartfile */,
 				072130991C094DE8004839FA /* ReallySimpleMVVMLoginExampleWithRxSwift */,
 				072130981C094DE7004839FA /* Products */,
-				908B80657F3A809C4C795DC0 /* Pods */,
 				CCA2FD8C2370CAFA673E6B5E /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -122,20 +140,11 @@
 			name = Managers;
 			sourceTree = "<group>";
 		};
-		908B80657F3A809C4C795DC0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				76BAA8E51A48FFA7E0A9317D /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.debug.xcconfig */,
-				679A03F287930CB0A550EFED /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		CCA2FD8C2370CAFA673E6B5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A97A763703511A9501F27BD2 /* Pods.framework */,
-				044719D0B41C32F580C505A9 /* Pods_ReallySimpleMVVMLoginExampleWithRxSwift.framework */,
+				382A884B1D788B610051692A /* RxCocoa.framework */,
+				382A884C1D788B610051692A /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,12 +156,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 072130A91C094DE8004839FA /* Build configuration list for PBXNativeTarget "ReallySimpleMVVMLoginExampleWithRxSwift" */;
 			buildPhases = (
-				00C4B8096A36C394382AB243 /* Check Pods Manifest.lock */,
 				072130931C094DE7004839FA /* Sources */,
 				072130941C094DE7004839FA /* Frameworks */,
 				072130951C094DE7004839FA /* Resources */,
-				E860460A5F6881745D0AF944 /* Embed Pods Frameworks */,
-				E8228565D723106BE93AB887 /* Copy Pods Resources */,
+				382A88511D788B610051692A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,11 +177,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Carlos García";
 				TargetAttributes = {
 					072130961C094DE7004839FA = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -208,54 +216,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		00C4B8096A36C394382AB243 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E8228565D723106BE93AB887 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReallySimpleMVVMLoginExampleWithRxSwift/Pods-ReallySimpleMVVMLoginExampleWithRxSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E860460A5F6881745D0AF944 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReallySimpleMVVMLoginExampleWithRxSwift/Pods-ReallySimpleMVVMLoginExampleWithRxSwift-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		072130931C094DE7004839FA /* Sources */ = {
@@ -308,8 +268,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -352,8 +314,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -372,31 +336,40 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		072130AA1C094DE8004839FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76BAA8E51A48FFA7E0A9317D /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReallySimpleMVVMLoginExampleWithRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.cgn.ReallySimpleMVVMLoginExampleWithRxSwift;
 				PRODUCT_NAME = RxLogin;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		072130AB1C094DE8004839FA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 679A03F287930CB0A550EFED /* Pods-ReallySimpleMVVMLoginExampleWithRxSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ReallySimpleMVVMLoginExampleWithRxSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.cgn.ReallySimpleMVVMLoginExampleWithRxSwift;
 				PRODUCT_NAME = RxLogin;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

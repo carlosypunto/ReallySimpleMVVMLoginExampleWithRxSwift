@@ -15,7 +15,7 @@ Make sure you have `node.js` and `npm` installed.
 3. `npm update`
 4. `node server.js`
 
-and run `pod install` in the iOS project.
+and run `carthage update` in the iOS project. Add RxSwift and RxCocoa frameworks as embedded frameworks.
 
 To log in, use the following credentials:
 * `username`: user
