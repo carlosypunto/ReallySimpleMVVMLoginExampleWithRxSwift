@@ -10,52 +10,52 @@ import RxSwift
 
 typealias JSONDictionary = [String:AnyObject]
 
-enum AutenticationError: ErrorType {
-    case Server
-    case BadReponse
-    case BadCredentials
+enum AutenticationError: Error {
+    case server
+    case badReponse
+    case badCredentials
 }
 
 enum AutenticationStatus {
-    case None
-    case Error(AutenticationError)
-    case User(String)
+    case none
+    case error(AutenticationError)
+    case user(String)
 }
 
 class AuthManager {
     
-    let status = Variable(AutenticationStatus.None)
+    let status = Variable(AutenticationStatus.none)
     
     static var sharedManager = AuthManager()
     
-    private init() {}
+    fileprivate init() {}
     
-    func login(username: String, password: String) -> Observable<AutenticationStatus> {
-        let url = NSURL(string: "http://localhost:3000/login/\(username)/\(password)")!
-        return NSURLSession.sharedSession().rx_JSON(url)
+    func login(_ username: String, password: String) -> Observable<AutenticationStatus> {
+        let url = URL(string: "http://localhost:3000/login/\(username)/\(password)")!
+        return URLSession.shared.rx.JSON(url)
             .map {
                 guard let root = $0 as? JSONDictionary,
                     let loginStatus = root["login_status"] as? Bool else {
-                    return .Error(.BadReponse)
+                    return .error(.badReponse)
                 }
                 
                 if loginStatus {
                     guard let user = root["user"] as? JSONDictionary,
                     let firstname = user["firstname"] as? String,
                     let lastname = user["lastname"] else {
-                        return .Error(.BadReponse)
+                        return .error(.badReponse)
                     }
-                    return .User("\(firstname) \(lastname)")
+                    return .user("\(firstname) \(lastname)")
                 }
                 else {
-                    return .Error(.BadCredentials)
+                    return .error(.badCredentials)
                 }
             }
-            .catchErrorJustReturn(.Error(.Server))
+            .catchErrorJustReturn(.error(.server))
     }
     
     func logout() {
-        status.value = .None
+        status.value = .none
     }
     
 }

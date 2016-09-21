@@ -22,44 +22,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var logoutButton: UIButton!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         viewModel.loginStatus
-            .driveNext { [unowned self] status in
+            .drive(onNext: { [unowned self] status in
                 switch status {
-                case .None:
+                case .none:
                     self.showLogin()
-                case .Error(_):
+                case .error(_):
                     self.showLogin()  
-                case .User(let user):
+                case .user(let user):
                     self.showAccess(user)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
-        logoutButton.rx_tap
-            .subscribeNext { [unowned self] _ in
+        logoutButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in
                 self.viewModel.logout()
-            }
+            })
             .addDisposableTo(disposeBag)
     }
     
-    private func showLogin() {
-        infoView.hidden = true
+    fileprivate func showLogin() {
+        infoView.isHidden = true
         infoLabel.text = ""
         guard loginNavigationController != nil else {
             loginNavigationController = UIStoryboard.loginNC
             loginController = loginNavigationController?.loginController
-            presentViewController(loginNavigationController!, animated: true, completion: nil)
+            present(loginNavigationController!, animated: true, completion: nil)
             return
         }
     }
     
-    private func showAccess(username: String) {
-        infoView.hidden = false
+    fileprivate func showAccess(_ username: String) {
+        infoView.isHidden = false
         infoLabel.text = "You are logged in with username: \(username)"
-        dismissViewControllerAnimated(true) { [unowned self] in
+        dismiss(animated: true) { [unowned self] in
             self.loginController = nil
             self.loginNavigationController = nil
         }
@@ -70,12 +70,12 @@ class ViewController: UIViewController {
 
 private extension UIStoryboard {
     
-    weak static var mainStoryboard: UIStoryboard? {
-        return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+    static var mainStoryboard: UIStoryboard? {
+        return UIStoryboard(name: "Main", bundle: Bundle.main)
     }
     
-    weak static var loginNC: LoginNavigationController? {
-        return UIStoryboard.mainStoryboard?.instantiateViewControllerWithIdentifier("LoginNC") as? LoginNavigationController
+    static var loginNC: LoginNavigationController? {
+        return UIStoryboard.mainStoryboard?.instantiateViewController(withIdentifier: "LoginNC") as? LoginNavigationController
     }
     
 }

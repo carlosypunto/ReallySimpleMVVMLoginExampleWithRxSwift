@@ -25,93 +25,93 @@ class LoginViewController: UITableViewController {
         let gr = UITapGestureRecognizer()
         gr.numberOfTapsRequired = 1
         tableView.addGestureRecognizer(gr)
-        gr.rx_event.asObservable()
-            .subscribeNext { [unowned self] _ in
+        gr.rx.event.asObservable()
+            .subscribe(onNext: { [unowned self] _ in
                 self.hideKeyboard()
-            }
+            })
             .addDisposableTo(disposeBag)
         
-        let viewModel = LoginViewModel(usernameText: usernameTextField.rx_text.asDriver(),
-            passwordText: passwordTextField.rx_text.asDriver())
+        let viewModel = LoginViewModel(usernameText: usernameTextField.rx.text.asDriver(),
+            passwordText: passwordTextField.rx.text.asDriver())
         
         viewModel.usernameBGColor
-            .driveNext { [unowned self] color in
-                UIView.animateWithDuration(0.2) {
+            .drive(onNext: { [unowned self] color in
+                UIView.animate(withDuration: 0.2) {
                     self.usernameTextField.superview?.backgroundColor = color
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         
         viewModel.passwordBGColor
-            .driveNext { [unowned self] color in
-                UIView.animateWithDuration(0.2) {
+            .drive(onNext: { [unowned self] color in
+                UIView.animate(withDuration: 0.2) {
                     self.passwordTextField.superview?.backgroundColor = color
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
         viewModel.credentialsValid
-            .driveNext { [unowned self] valid in
-                self.enterButton.enabled = valid
-            }
+            .drive(onNext: { [unowned self] valid in
+                self.enterButton.isEnabled = valid
+            })
             .addDisposableTo(disposeBag)
         
-        enterButton.rx_tap
+        enterButton.rx.tap
             .withLatestFrom(viewModel.credentialsValid)
             .filter { $0 }
             .flatMapLatest { [unowned self] valid -> Observable<AutenticationStatus> in
                 viewModel.login(self.usernameTextField.text!, password: self.passwordTextField.text!)
                     .trackActivity(viewModel.activityIndicator)
-                    .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .Default))
+                    .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .default))
             }
             .observeOn(MainScheduler.instance)
-            .subscribeNext { [unowned self] autenticationStatus in
+            .subscribe(onNext: { [unowned self] autenticationStatus in
                 switch autenticationStatus {
-                case .None:
+                case .none:
                     break
-                case .User(_):
+                case .user(_):
                     break
-                case .Error(let error):
+                case .error(let error):
                     self.showError(error)
                 }
                 AuthManager.sharedManager.status.value = autenticationStatus
-            }
+            })
             .addDisposableTo(disposeBag)
         
         
         viewModel.activityIndicator
             .distinctUntilChanged()
-            .driveNext { [unowned self] active in
+            .drive(onNext: { [unowned self] active in
                 self.hideKeyboard()
-                self.activityIndicator.hidden = !active
-                self.enterButton.enabled = !active
-            }
+                self.activityIndicator.isHidden = !active
+                self.enterButton.isEnabled = !active
+            })
             .addDisposableTo(disposeBag)
         
     }
     
-    private func hideKeyboard() {
+    fileprivate func hideKeyboard() {
         self.usernameTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
     }
     
-    private func showError(error: AutenticationError) {
+    fileprivate func showError(_ error: AutenticationError) {
         let title: String
         let message: String
         
         switch error {
-        case .Server, .BadReponse:
+        case .server, .badReponse:
             title = "An error occuried"
             message = "Server error"
-        case .BadCredentials:
+        case .badCredentials:
             title = "Bad credentials"
             message = "This user don't exist"
         }
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }

@@ -12,7 +12,7 @@ import RxCocoa
 
 struct ViewControllerViewModel {
     
-    let loginStatus = AuthManager.sharedManager.status.asDriver().asDriver(onErrorJustReturn: .None)
+    let loginStatus = AuthManager.sharedManager.status.asDriver().asDriver(onErrorJustReturn: .none)
     
     func logout() {
         AuthManager.sharedManager.logout()

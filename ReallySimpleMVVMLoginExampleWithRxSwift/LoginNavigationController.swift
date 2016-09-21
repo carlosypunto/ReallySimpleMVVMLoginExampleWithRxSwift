@@ -16,7 +16,7 @@ class LoginNavigationController: UINavigationController {
         return _loginController()
     }
     
-    private func _loginController() -> LoginViewController? {
+    fileprivate func _loginController() -> LoginViewController? {
         return viewControllers.first as? LoginViewController
     }
     

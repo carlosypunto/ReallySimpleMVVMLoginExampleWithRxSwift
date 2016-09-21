@@ -31,16 +31,16 @@ struct LoginViewModel {
             .map { $0.utf8.count > 3 }
         
         usernameBGColor = usernameValid
-            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
+            .map { $0 ? BG_COLOR : UIColor.white }
         
         passwordBGColor = passwordValid
-            .map { $0 ? BG_COLOR : UIColor.whiteColor() }
+            .map { $0 ? BG_COLOR : UIColor.white }
         
         credentialsValid = Driver.combineLatest(usernameValid, passwordValid) { $0 && $1 }
         
     }
     
-    func login(username: String, password: String) -> Observable<AutenticationStatus> {
+    func login(_ username: String, password: String) -> Observable<AutenticationStatus> {
         return AuthManager.sharedManager.login(username, password: password)
     }
     
