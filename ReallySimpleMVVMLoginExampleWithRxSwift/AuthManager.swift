@@ -8,7 +8,7 @@
 
 import RxSwift
 
-typealias JSONDictionary = [String:AnyObject]
+typealias JSONDictionary = [String: Any]
 
 enum AutenticationError: Error {
     case server
@@ -32,7 +32,7 @@ class AuthManager {
     
     func login(_ username: String, password: String) -> Observable<AutenticationStatus> {
         let url = URL(string: "http://localhost:3000/login/\(username)/\(password)")!
-        return URLSession.shared.rx.JSON(url)
+        return URLSession.shared.rx.json(url: url)
             .map {
                 guard let root = $0 as? JSONDictionary,
                     let loginStatus = root["login_status"] as? Bool else {

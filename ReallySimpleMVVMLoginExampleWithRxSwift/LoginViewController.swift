@@ -22,6 +22,9 @@ class LoginViewController: UITableViewController {
     
     override func viewDidLoad() {
         
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        
         let gr = UITapGestureRecognizer()
         gr.numberOfTapsRequired = 1
         tableView.addGestureRecognizer(gr)
@@ -31,8 +34,8 @@ class LoginViewController: UITableViewController {
             })
             .addDisposableTo(disposeBag)
         
-        let viewModel = LoginViewModel(usernameText: usernameTextField.rx.text.asDriver(),
-            passwordText: passwordTextField.rx.text.asDriver())
+        let viewModel = LoginViewModel(usernameText: usernameTextField.rx.text.orEmpty.asDriver(),
+            passwordText: passwordTextField.rx.text.orEmpty.asDriver())
         
         viewModel.usernameBGColor
             .drive(onNext: { [unowned self] color in
@@ -63,7 +66,7 @@ class LoginViewController: UITableViewController {
             .flatMapLatest { [unowned self] valid -> Observable<AutenticationStatus> in
                 viewModel.login(self.usernameTextField.text!, password: self.passwordTextField.text!)
                     .trackActivity(viewModel.activityIndicator)
-                    .observeOn(SerialDispatchQueueScheduler(globalConcurrentQueueQOS: .default))
+                    .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] autenticationStatus in
@@ -112,6 +115,20 @@ class LoginViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        else {
+            textField.resignFirstResponder()
+        }
+        return false
     }
     
 }

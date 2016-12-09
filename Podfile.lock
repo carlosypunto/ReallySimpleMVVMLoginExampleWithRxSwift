@@ -1,16 +1,30 @@
 PODS:
-  - RxCocoa (3.0.0-beta.1):
-    - RxSwift (~> 3.0.0-beta.1)
-  - RxSwift (3.0.0-beta.1)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
+  - RxSwiftUtilities (1.0.1):
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
 
 DEPENDENCIES:
-  - RxCocoa (~> 3.0.0-beta.1)
-  - RxSwift (~> 3.0.0-beta.1)
+  - RxCocoa (~> 3.0.1)
+  - RxSwift (~> 3.0.1)
+  - RxSwiftUtilities (from `https://github.com/RxSwiftCommunity/RxSwiftUtilities.git`)
+
+EXTERNAL SOURCES:
+  RxSwiftUtilities:
+    :git: https://github.com/RxSwiftCommunity/RxSwiftUtilities.git
+
+CHECKOUT OPTIONS:
+  RxSwiftUtilities:
+    :commit: 9641e007c3ae067889bc6dc8830f3a4112ce0c10
+    :git: https://github.com/RxSwiftCommunity/RxSwiftUtilities.git
 
 SPEC CHECKSUMS:
-  RxCocoa: 8cecf331302b8ae5381bbab1bccba4ede2eae6a8
-  RxSwift: 0823e8d7969c23bfa9ddfb2afa4881e424a1a710
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  RxSwiftUtilities: 2614ffe05d2da158f79f50314a08122d13ac61d4
 
-PODFILE CHECKSUM: 71e89ae8843cdc3a93d7c4a798f7934b70e626dc
+PODFILE CHECKSUM: 4625135e83f095c8d1dd1c89e753a7ce7aec4fa4
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.0.beta.1
