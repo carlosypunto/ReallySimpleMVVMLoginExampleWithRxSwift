@@ -1,5 +1,7 @@
 # Really Simple MVVM Login Example With RxSwift
 
+Historical (2015): early MVVM+RxSwift example, Swift 2.x — kept for reference. For my current work, see SQLiteVecKit and SearchKit
+
 ![](screenshots.png)
 
 
